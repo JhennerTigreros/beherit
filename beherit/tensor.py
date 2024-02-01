@@ -16,8 +16,8 @@ class Tensor:
         if dtype is not None:
             self.dtype = dtype
         else:
-            check, dtype =  check_dtype(data)
-            if not check:
+            dtype =  check_dtype(data)
+            if not dtype:
                 raise Exception("Dtype not matching")
             self.dtype = dtype
         
