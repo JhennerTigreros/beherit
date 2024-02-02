@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from typing import Tuple, List
 from beherit.storage import Storage
 import platform
 from beherit.utils import check_dtype
-
 
 class Tensor:
     dim: Tuple[int, ...]
@@ -27,7 +28,7 @@ class Tensor:
         self.storage = Storage(device, data)
         self.dim = tuple([len(data), len(data[0])])
 
-    def __getitem__(self, indices) -> any:
+    def __getitem__(self, indices) -> Tensor:
         if type(indices) is tuple:
             return Tensor(self.storage.data[indices[0]][indices[1]])
 

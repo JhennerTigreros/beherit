@@ -7,4 +7,4 @@ def check_dtype(data) -> Optional[str]:
 
     if len(dtype) > 1: return None
 
-    return dtype[0]
+    return dtype.pop()

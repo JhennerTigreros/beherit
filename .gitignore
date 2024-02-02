@@ -1,1 +1,8 @@
 **/__pycache__
+
+# Dev folders
+**/.vscode
+**/.venv
+
+# Builds
+**/build
