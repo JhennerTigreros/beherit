@@ -2,6 +2,6 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(example, m) {
+PYBIND11_MODULE(asmodeus, m) {
     m.doc() = "Module definition to communicate with low level hardware instructions and optimizations.";
 }
