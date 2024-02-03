@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-from typing import Tuple, List
-from beherit.storage import Storage
 import platform
-from beherit.utils import check_dtype
+
+from beherit.storage import Storage
+from beherit.utils import DTypeException, check_dtype
+
 
 class Tensor:
-    dim: Tuple[int, ...]
-    strides: Tuple[int, int, int]
+    dim: tuple[int, ...]
+    strides: tuple[int, int, int]
     dtype: str
     storage: Storage
     # TODO: Support more formats of tensor
@@ -17,11 +18,11 @@ class Tensor:
         if dtype is not None:
             self.dtype = dtype
         else:
-            dtype =  check_dtype(data)
+            dtype = check_dtype(data)
             if not dtype:
-                raise Exception("Dtype not matching")
+                raise DTypeException("Dtype not matching")
             self.dtype = dtype
-        
+
         if platform.system() == "Darwin":
             device = "metal"
 
@@ -34,7 +35,7 @@ class Tensor:
 
         return Tensor(self.storage.data[indices])
 
-    def to_list(self) -> List:
+    def to_list(self) -> list:
         return self.storage.data
 
     def __repr__(self) -> str:

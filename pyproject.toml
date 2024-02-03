@@ -1,0 +1,47 @@
+[build-system]
+requires = [
+    "setuptools",
+    "pybind11>=2.10.0",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.cibuildwheel]
+test-command = "python {project}/tests/test.py"
+test-skip = "*universal2:arm64"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 140
+exclude = [
+    ".venv/",
+    "extern/",
+    ".vscode/",
+    "build/",
+]
+
+[tool.ruff.lint]
+select = [
+  "F",
+  "W6",
+  "E71",
+  "E72",
+  "E112",   # no-indented-block
+  "E113",   # unexpected-indentation
+  "E203",   # whitespace-before-punctuation
+  "E272",   # multiple-spaces-before-keyword
+  "E501",   # line-too-long
+  "E702",   # multiple-statements-on-one-line-semicolon
+  "E703",   # useless-semicolon
+  "E731",   # lambda-assignment
+  "W191",   # tab-indentation
+  "W291",   # trailing-whitespace
+  "W293",   # blank-line-with-whitespace
+  "UP039",  # unnecessary-class-parentheses
+]
+extend-select = [
+    "B",
+    "I",
+    "PGH",
+    "RUF",
+    "UP"
+]
