@@ -1,3 +1,5 @@
+from beherit import Device 
+
 class Storage:
     device: str
     data: list
